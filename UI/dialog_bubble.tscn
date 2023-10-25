@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctt5kt2wem7bq"]
+
+[ext_resource type="Texture2D" uid="uid://df5ni1ntr6cyg" path="res://assets/UI/对话框把手.png" id="1_kgfws"]
+[ext_resource type="Texture2D" uid="uid://bn33vye16gb3c" path="res://assets/UI/对话框点9图.9.png" id="1_m2fdp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrigw"]
+texture = ExtResource("1_m2fdp")
+
+[node name="DialogBubble" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Content" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -241.0
+offset_right = 363.0
+offset_bottom = -12.1657
+theme_override_styles/normal = SubResource("StyleBoxTexture_xrigw")
+
+[node name="Handle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -59.0
+offset_right = 61.0
+texture = ExtResource("1_kgfws")
+flip_h = true
