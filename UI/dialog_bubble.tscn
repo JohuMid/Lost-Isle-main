@@ -1,22 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctt5kt2wem7bq"]
+[gd_scene load_steps=6 format=3 uid="uid://ctt5kt2wem7bq"]
 
 [ext_resource type="Texture2D" uid="uid://df5ni1ntr6cyg" path="res://assets/UI/对话框把手.png" id="1_kgfws"]
 [ext_resource type="Texture2D" uid="uid://bn33vye16gb3c" path="res://assets/UI/对话框点9图.9.png" id="1_m2fdp"]
+[ext_resource type="Script" path="res://UI/DialogBubble.gd" id="1_vn8ul"]
+
+[sub_resource type="FontVariation" id="FontVariation_vsjc7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrigw"]
 texture = ExtResource("1_m2fdp")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
 
 [node name="DialogBubble" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_vn8ul")
 
 [node name="Content" type="Label" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = -241.0
-offset_right = 363.0
-offset_bottom = -12.1657
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -124.0
+offset_right = 582.0
+offset_bottom = -22.0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.2, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_vsjc7")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_xrigw")
+text = "制单大臂"
+autowrap_mode = 3
 
 [node name="Handle" type="TextureRect" parent="."]
 layout_mode = 0
@@ -24,3 +43,5 @@ offset_top = -59.0
 offset_right = 61.0
 texture = ExtResource("1_kgfws")
 flip_h = true
+
+[connection signal="gui_input" from="Content" to="." method="_on_content_gui_input"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://duaq1sq013555"]
+
+[ext_resource type="Texture2D" uid="uid://c362b74uedbs8" path="res://assets/UI/道具指示文字背景黑块.png" id="1_f1cvr"]
+[ext_resource type="Script" path="res://UI/Inventory.gd" id="1_u28at"]
+[ext_resource type="Texture2D" uid="uid://bapm17hbkqvs0" path="res://assets/UI/道具栏的左箭头.png" id="2_0hhwj"]
+[ext_resource type="Texture2D" uid="uid://ba3rtafje87fj" path="res://assets/UI/道具栏的左箭头按下.png" id="3_7gdus"]
+[ext_resource type="Texture2D" uid="uid://caws1ftvt1gjt" path="res://assets/UI/道具栏的左箭头不可用.png" id="4_igaw8"]
+[ext_resource type="Texture2D" uid="uid://bqvt7f5wperf6" path="res://assets/UI/道具栏.png" id="5_6q6my"]
+[ext_resource type="Texture2D" uid="uid://dq8f8rgpq5vtd" path="res://assets/H2/key_prop.png" id="6_c6k04"]
+[ext_resource type="Texture2D" uid="uid://08i0fejhpn8a" path="res://assets/UI/抓着道具的手.png" id="7_onvd2"]
+[ext_resource type="Texture2D" uid="uid://dcc5julgmt7by" path="res://assets/UI/道具栏的右箭头.png" id="8_d3vcs"]
+[ext_resource type="Texture2D" uid="uid://d0buf65we58i2" path="res://assets/UI/道具栏的右箭头按下.png" id="9_7ftuo"]
+[ext_resource type="Texture2D" uid="uid://b0p3f8equit3a" path="res://assets/UI/道具栏的右箭头不可用.png" id="10_2lufv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m3bf5"]
+texture = ExtResource("1_f1cvr")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ye0f8"]
+line_spacing = 6.0
+font_size = 40
+
+[node name="Inventory" type="VBoxContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_top = -332.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+script = ExtResource("1_u28at")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_m3bf5")
+text = "道具描述"
+label_settings = SubResource("LabelSettings_ye0f8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Prev" type="TextureButton" parent="ItemBar"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_0hhwj")
+texture_pressed = ExtResource("3_7gdus")
+texture_disabled = ExtResource("4_igaw8")
+
+[node name="Use" type="TextureButton" parent="ItemBar"]
+layout_mode = 2
+texture_normal = ExtResource("5_6q6my")
+
+[node name="Prop" type="Sprite2D" parent="ItemBar/Use"]
+z_index = 1
+position = Vector2(114, 103)
+texture = ExtResource("6_c6k04")
+
+[node name="Hand" type="Sprite2D" parent="ItemBar/Use"]
+z_index = 1
+position = Vector2(167, 135)
+texture = ExtResource("7_onvd2")
+
+[node name="Next" type="TextureButton" parent="ItemBar"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("8_d3vcs")
+texture_pressed = ExtResource("9_7ftuo")
+texture_disabled = ExtResource("10_2lufv")
