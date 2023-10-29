@@ -34,6 +34,7 @@ offset_top = -332.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
+size_flags_vertical = 8
 script = ExtResource("1_u28at")
 
 [node name="Label" type="Label" parent="."]
@@ -44,6 +45,9 @@ text = "道具描述"
 label_settings = SubResource("LabelSettings_ye0f8")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 1.5
 
 [node name="ItemBar" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -76,3 +80,8 @@ size_flags_vertical = 4
 texture_normal = ExtResource("8_d3vcs")
 texture_pressed = ExtResource("9_7ftuo")
 texture_disabled = ExtResource("10_2lufv")
+
+[connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ItemBar/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="ItemBar/Use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="ItemBar/Next" to="." method="_on_next_pressed"]

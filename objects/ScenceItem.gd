@@ -20,6 +20,7 @@ func _interact():
 	super._interact()
 	
 	Game.flags.add(_get_flag())
+	Game.inventory.add_item(item)
 	
 	var sprite := Sprite2D.new()
 	sprite.texture = item.scene_texture
