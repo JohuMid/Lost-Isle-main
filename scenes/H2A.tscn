@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5rrc0lhlydi6"]
+[gd_scene load_steps=11 format=3 uid="uid://c5rrc0lhlydi6"]
 
 [ext_resource type="PackedScene" uid="uid://c2mhsuew6m8q6" path="res://scenes/Scene.tscn" id="1_d1hx1"]
 [ext_resource type="Texture2D" uid="uid://becmh4hkylfav" path="res://assets/H2A/roomsignBG.png" id="1_l8js2"]
 [ext_resource type="Script" path="res://objects/Teleporter.gd" id="2_ur5io"]
+[ext_resource type="Script" path="res://scenes/H2A.gd" id="3_30plk"]
+[ext_resource type="Script" path="res://mini-game/H2ABoard.gd" id="4_6x2tx"]
+[ext_resource type="Resource" uid="uid://c1iso2831n0u7" path="res://mini-game/easy.tres" id="5_671mt"]
+[ext_resource type="Script" path="res://objects/Interactable.gd" id="7_xyxu7"]
+[ext_resource type="Texture2D" uid="uid://bsdh3ap553yi7" path="res://assets/H2A/gearbg.png" id="8_eol33"]
+[ext_resource type="Texture2D" uid="uid://bwm2exfuspxc1" path="res://assets/H2A/gear.png" id="9_3v8g4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16656"]
 radius = 57.8705
 
 [node name="Background" instance=ExtResource("1_d1hx1")]
 texture = ExtResource("1_l8js2")
+script = ExtResource("3_30plk")
+music_override = "res://assets/Music/OpenRoad.mp3"
 
 [node name="Teleporter" type="Area2D" parent="." index="0"]
 position = Vector2(-812, -437)
@@ -18,3 +26,19 @@ target_path = "res://scenes/H2.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="0"]
 position = Vector2(7, 9)
 shape = SubResource("CircleShape2D_16656")
+
+[node name="Board" type="Node2D" parent="." index="1"]
+position = Vector2(-44, 6)
+script = ExtResource("4_6x2tx")
+radius = 350.0
+config = ExtResource("5_671mt")
+
+[node name="Reset" type="Area2D" parent="." index="2"]
+position = Vector2(674, -346)
+script = ExtResource("7_xyxu7")
+texture = ExtResource("8_eol33")
+
+[node name="Gear" type="Sprite2D" parent="Reset" index="2"]
+texture = ExtResource("9_3v8g4")
+
+[connection signal="interact" from="Reset" to="." method="_on_reset_interact"]

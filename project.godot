@@ -11,15 +11,17 @@ config_version=5
 [application]
 
 config/name="Lost Isle"
-run/main_scene="res://scenes/H1.tscn"
+run/main_scene="res://UI/TitleSceen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+SoundMananger="*res://global/SoundMananger.tscn"
 SceneChanger="*res://global/SceneChanger.tscn"
 Game="*res://global/Game.gd"
 Hud="res://global/HUD.tscn"
+ClickVisualizer="res://global/ClickVisualizer.gd"
 
 [display]
 

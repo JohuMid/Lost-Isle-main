@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dh6h1nbka573l" path="res://assets/H2/key.png" id="7_55n5s"]
 [ext_resource type="Script" path="res://objects/ScenceItem.gd" id="7_am58p"]
 [ext_resource type="Resource" uid="uid://8x4fe32wltfn" path="res://items/key.tres" id="8_xdx3f"]
-[ext_resource type="Resource" uid="uid://cubh7yeu78gta" path="res://items/mail.tres" id="10_47q65"]
-[ext_resource type="Texture2D" uid="uid://sa4shqot4gha" path="res://assets/H4/mail_piece.png" id="11_wtfgu"]
+[ext_resource type="Script" path="res://objects/FlagSwitch.gd" id="10_2sjao"]
+[ext_resource type="Texture2D" uid="uid://d0jna0auns7rp" path="res://assets/H2/door.png" id="11_67nja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16656"]
 radius = 57.8705
@@ -45,16 +45,36 @@ target_path = "res://scenes/H4.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter2" index="0"]
 shape = SubResource("CircleShape2D_t6j3a")
 
-[node name="Teleporter3" type="Area2D" parent="." index="2"]
+[node name="ScenceItem" type="Area2D" parent="." index="2"]
+position = Vector2(90, 476)
+script = ExtResource("7_am58p")
+item = ExtResource("8_xdx3f")
+texture = ExtResource("7_55n5s")
+
+[node name="FlagSwitch" type="Node2D" parent="." index="3"]
+script = ExtResource("10_2sjao")
+flag = "h2a_unlocked"
+
+[node name="ToH2A" type="Area2D" parent="FlagSwitch" index="0"]
+position = Vector2(12, -210)
+script = ExtResource("2_kt2m7")
+target_path = "res://scenes/H2A.tscn"
+texture = ExtResource("11_67nja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlagSwitch/ToH2A" index="0"]
+position = Vector2(29.25, -12.5)
+shape = SubResource("RectangleShape2D_m4pdl")
+
+[node name="Teleporter3" type="Area2D" parent="FlagSwitch" index="1"]
 position = Vector2(12, -213)
 script = ExtResource("2_kt2m7")
 target_path = "res://scenes/H3.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter3" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlagSwitch/Teleporter3" index="0"]
 position = Vector2(29.25, -12.5)
 shape = SubResource("RectangleShape2D_m4pdl")
 
-[node name="Granny" type="Area2D" parent="." index="3"]
+[node name="Granny" type="Area2D" parent="." index="4"]
 position = Vector2(-364, 3)
 script = ExtResource("5_3nciw")
 allow_item = true
@@ -69,17 +89,5 @@ offset_left = 53.0
 offset_top = 2.0
 offset_right = 53.0
 offset_bottom = 2.0
-
-[node name="ScenceItem" type="Area2D" parent="." index="4"]
-position = Vector2(-189, 270)
-script = ExtResource("7_am58p")
-item = ExtResource("8_xdx3f")
-texture = ExtResource("7_55n5s")
-
-[node name="ScenceItem2" type="Area2D" parent="." index="5"]
-position = Vector2(204, 244)
-script = ExtResource("7_am58p")
-item = ExtResource("10_47q65")
-texture = ExtResource("11_wtfgu")
 
 [connection signal="interact" from="Granny" to="." method="_on_granny_interact"]

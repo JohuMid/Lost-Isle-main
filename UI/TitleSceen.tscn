@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtwb8mn4spjm3"]
+
+[ext_resource type="Theme" uid="uid://cubjxe6trbs8e" path="res://UI/TitleTheme.tres" id="1_g1fc6"]
+[ext_resource type="Texture2D" uid="uid://bnhspx35qx3eg" path="res://assets/UI/title_screen.png" id="2_1av71"]
+[ext_resource type="Script" path="res://UI/TitleSceen.gd" id="3_maudh"]
+[ext_resource type="Theme" uid="uid://24bvljrdavc7" path="res://UI/TitleSceen.tres" id="3_wev7q"]
+
+[node name="TitleScreen" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g1fc6")
+texture = ExtResource("2_1av71")
+script = ExtResource("3_maudh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wev7q")
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="New" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "新游戏"
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "加载"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "退出"
+
+[connection signal="pressed" from="VBoxContainer/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

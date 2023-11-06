@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd7y3q4cot5xr"]
+
+[ext_resource type="Script" path="res://global/SoundMananger.gd" id="1_2i57y"]
+
+[sub_resource type="GDScript" id="GDScript_pvf1k"]
+script/source = "extends AudioStreamPlayer
+"
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_2i57y")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+script = SubResource("GDScript_pvf1k")

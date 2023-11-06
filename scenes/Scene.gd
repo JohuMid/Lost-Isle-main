@@ -1,4 +1,7 @@
 extends Sprite2D
+class_name Scene
+
+@export_file("*.mp3") var music_override := ""
 
 func _ready():
 	var tween := create_tween()

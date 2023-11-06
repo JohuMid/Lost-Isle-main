@@ -30,7 +30,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -354.0
-offset_top = -332.0
+offset_top = -210.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
@@ -38,6 +38,7 @@ size_flags_vertical = 8
 script = ExtResource("1_u28at")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_m3bf5")
@@ -52,6 +53,7 @@ wait_time = 1.5
 [node name="ItemBar" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="Prev" type="TextureButton" parent="ItemBar"]
 layout_mode = 2
